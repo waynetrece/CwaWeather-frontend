@@ -32,7 +32,12 @@
 
         body {
             font-family: 'Oswald', sans-serif; /* Default font */
-            /* Background handled by .bg-layer */
+            background-color: var(--rock-blue);
+            /* Halftone pattern effect */
+            background-image: radial-gradient(var(--rock-black) 15%, transparent 16%),
+                              radial-gradient(var(--rock-black) 15%, transparent 16%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
             min-height: 100vh;
             color: var(--rock-black);
             overflow-x: hidden;
@@ -261,45 +266,6 @@
             padding: 5px 0;
         }
 
-        /* Dynamic Background Layer */
-        .bg-layer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background-image: url('./rock_band_bg.png');
-            background-size: cover;
-            background-position: center bottom;
-            opacity: 0.6; /* Fade it out a bit so text is readable */
-            animation: concertShake 0.2s infinite; /* High energy shake */
-        }
-
-        /* Overlay to ensure text contrast */
-        .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: rgba(255, 242, 0, 0.2); /* Yellow tint */
-            background-image: radial-gradient(var(--rock-black) 15%, transparent 16%),
-                              radial-gradient(var(--rock-black) 15%, transparent 16%);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
-            mix-blend-mode: multiply;
-        }
-
-        @keyframes concertShake {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(-2px, 2px) rotate(-0.5deg); }
-            50% { transform: translate(2px, -2px) rotate(0.5deg); }
-            75% { transform: translate(-2px, -2px) rotate(-0.5deg); }
-            100% { transform: translate(0, 0) rotate(0deg); }
-        }
-
         /* Loading 畫面 */
         .loading-screen {
             position: fixed;
@@ -326,10 +292,6 @@
 </head>
 
 <body>
-    <!-- Background Layers -->
-    <div class="bg-layer"></div>
-    <div class="bg-overlay"></div>
-
     <div id="loading" class="loading-screen">
         <div style="font-size: 5rem; animation: bounce 0.5s infinite alternate;">🎸</div>
         <p class="loading-text">TUNING INSTRUMENTS...</p>
